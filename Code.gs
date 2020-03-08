@@ -6,9 +6,7 @@ function myFunction() {
 }
 
 function getInfo() {
-  var infoString = "Testing getInfo function";
   
-  Logger.log(exString);
 }
 
 function userClicked(name, item, address, city, zip, state, price, quantity, total) {
