@@ -47,7 +47,7 @@
          
          
             
-                <img class="d-block w-100" src="retro computers banner.jpg" alt="First slide">
+                <img class="d-block w-100" src="https://lh3.googleusercontent.com/JShWvXk9Xln_dQr1380QmmZzw_eCruXyQB8ARRDAksAGVbyueEKqoeSH9d3X8SFrIEDcVOANhf7QPMyUffBk=w1920-h942-rw" alt="First slide" width="800">
                 
                 
                 </div>
@@ -115,9 +115,36 @@
               <h5 class="card-title">Dekogon Workstation Pro</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <button id="btn1">Order</button>
+              <div id="modalBtn1" class="modal">
+                 <div class="modal-content">
+                    <span class ="close">&times;</span>
+                    <div>
+                       <label>Name:</label><input type="text" id="username">
+                    </div>
+                    <div>
+                       <label>Address:</label><input type="text" id="address">
+                    </div>
+                    <div>
+                       <label>City:</label><input type="text" id="city">
+                    </div>
+                    <div>
+                       <label>Zip:</label><input type="text" id="zip">
+                    </div>
+                    <div>
+                       <label>State:</label><input type="text" id="state">
+                    </div>
+                    <div>
+                       <label>Quantity:</label><input type="text" id="quantity">
+                    </div>
+                 </div>
+              </div>
               
               <script>
-              document.getElementById("btn1").addEventListener("click", getInfo);
+              document.getElementById("btn1").addEventListener("click", parseInfo);
+              
+              function parseInfo() {
+                 google.script.run.userClicked(username, Dekogon Workstation Pro, address, city, zip, state, 500, quantity, 500*quantity );
+              }
               
               </script>
             </div>
