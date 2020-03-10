@@ -29,10 +29,15 @@ function checkUser(uName, uPass) {
   var wName = ws.getRange("Username");
   var wPass = ws.getRange("Password");
   
-  // loop through spreadsheet and compare username, if matching username found then compare password
-  for (var y = 0; y < 100; y++) {
-    
+  // loop through spreadsheet and compare username, if matching username found then compare password, max 98 users
+  for (var y = 2; y < 100; y++) {
+    if(ws.getRange(y, 0) == uName && ws.getRange(y, 1) == uPass){
+      //username and password are correct
+      return 0;
+    }
   }
+  //If loop is fully traversed
+  //Username and password didn't match any existing records
 
 }
 
