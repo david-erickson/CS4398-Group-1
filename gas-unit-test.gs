@@ -1,10 +1,10 @@
-QUnit.helpers( this );
+/*QUnit.helpers( this );
 QUnit.exposeInternals();
 
 function tests() {
 console = Logger;
 userClickedTest();
-checkUserTest();
+//checkUserTest();
 }
 
 function doGet( e ) {
@@ -21,8 +21,8 @@ function userClickedTest() {
 
 }
 
-function checkUserTest() {
+/*function checkUserTest() {
 test("checkUser testing", function() {
 equal(checkUser("usename", "pass"), 0, "Testing for impossible username/password combination");
-});
-}
+});*/
+//} */
