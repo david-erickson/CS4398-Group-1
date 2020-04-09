@@ -1,3 +1,7 @@
+function doGet() {
+  return HtmlService.createHtmlOutputFromFile('retro computers');
+}
+
 function myFunction() {
   // test function for writing to log
   var exString = "This is the example string";
