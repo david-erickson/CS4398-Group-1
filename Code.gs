@@ -1,5 +1,7 @@
+
+// Required to run
 function doGet() {
-  return HtmlService.createHtmlOutputFromFile('retro computers');
+  return HtmlService.createHtmlOutputFromFile('retroComputers');
 }
 
 function myFunction() {
@@ -43,9 +45,4 @@ function checkUser(uName, uPass) {
   //If loop is fully traversed
   //Username and password didn't match any existing records
   return false;
-}
-
-// Required to run
-function doGet() {
-  return HtmlService.createHtmlOutputFromFile('retro computers.html');
 }
