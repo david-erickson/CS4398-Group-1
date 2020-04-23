@@ -33,14 +33,13 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cart</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Checkout</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Cart</a>
+               
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -123,14 +122,15 @@
             <div class="card-body">
               <h5 class="card-title">Dekogon Workstation Pro</h5>
               <p class="card-text">Packed with the latest technology, this bad boy will have you surfing the web at hyper speed.</p>
-            <input id=">Dekogon Workstation Pro" onclick="alert('Dekogon Workstation Pro added to cart')" onmouseover="parseInfo()" type="button" value="Order">
-            <script>         
-              document.getElementById(">Dekogon Workstation Pro").addEventListener("click", parseInfo);
               
-              function parseInfo() {
-                 google.script.run.userClicked(username, >Dekogon Workstation Pro, address, city, zip, state, 500, quantity, 500*quantity );
-              }
-             </script>
+            <input id="Dekogon Workstation Pro" type="button" value="Add to Cart" onclick="google.script.run.withSuccessHandler(updateCart).addToCart(<?= products[i].id ?>, this.form.quatity.value)" />
+
+                <script>
+                // refresh cart count UI/view
+                function updateCart(count) { alert(count + " items added to cart"); var div = document.getElementById('cart_details');div.innerHTML = 'Cart: ' + count;
+                  }
+                  </script>
+
           </div>
            </div>
         </div>
@@ -140,14 +140,9 @@
             <div class="card-body">
               <h5 class="card-title">Dekogon Workstation I</h5>
               <p class="card-text">Our entry level model, comes complete with a monitor, keyboard, and the latest in cutting edge floppy drive hardware.</p>
-            <input id="Dekogon Workstation I" onclick="alert('Dekogon Workstation I added to cart')" onmouseover="parseInfo()" type="button" value="Order">
-            <script>         
-              document.getElementById("Dekogon Workstation I").addEventListener("click", parseInfo);
-              
-              function parseInfo() {
-                 google.script.run.userClicked(username, Dekogon Workstation I, address, city, zip, state, 500, quantity, 500*quantity );
-              }
-             </script>
+             <form action = "/action_page.php">
+             <input id="Dekogon Workstation I" type="button" value="Add to Cart" onclick="google.script.run.withSuccessHandler(updateCart).addToCart(<?= products[i].id ?>, this.form.quatity.value)" />
+
               </div>
           </div>
         </div>
@@ -156,15 +151,47 @@
             <img class="card-img-top" src="http://retrocomputers.website/Apple%202.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Apple II</h5>
-              <p class="card-text">Gross.</p>
-            <input id="apple2" onclick="alert('Apple II added to cart')" onmouseover="parseInfo()" type="button" value="Order">
-            <script>         
-              document.getElementById("apple2").addEventListener("click", parseInfo);
+              <p id= "descriptionA" class="card-text">This is the Apple II. It's a very iconic retro computer.</p>
+              <div>
+              <p id= "priceA" value =$300> $300 </p>
+              </div>
               
-              function parseInfo() {
-                 google.script.run.userClicked(username, Apple II, address, city, zip, state, 500, quantity, 500*quantity );
-              }
-             </script>
+                <label>Quantity </label>
+                <select id = "quantityA">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                 </select>
+                 <input id="Apple2" type="button" value="Add to Cart">
+
+                <script>
+                  document.getElementById("Apple2").addEventListener("click", Applebttn)
+               
+                  function Applebttn() 
+                  { 
+                    alert(" item added to cart"); 
+                    var cartData = {};
+                    
+                    cartData.productId = document.getElementById("Apple2");
+                    cartData.description = document.getElementById("descriptionA");
+                    cartData.price = document.getElementById("priceA").value;
+                    cartData.quantity = document.getElementByID("quantityA").value;
+                    
+                    google.script.run.updateCart(cartData);
+                    document.getElementById("Apple2") = "Apple2";
+                    document.getElementById("descriptionA") = "This is the Apple II. It's a very iconic retro computer.";
+                    document.getElementById("priceA").value = "300";
+                    document.getElementById("quantityA").value = "";
+
+                  }
+                  </script>
               
           </div>
         </div>

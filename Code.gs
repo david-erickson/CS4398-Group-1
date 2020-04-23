@@ -3,6 +3,11 @@
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('retroComputers');
 }
+//keep this
+function include()
+{
+  return HtmlService.createHtmlOutputFromFile("retroComputers");
+}
 
 function myFunction() {
   // test function for writing to log
@@ -11,7 +16,12 @@ function myFunction() {
   Logger.log(exString);
 }
 
-function getInfo() {
+function updateCart(cartData) {
+  var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
+  var ss = SpreadsheetApp.openByUrl(url);
+  var ws = ss.getSheetByName("Cart");
+  
+  ws.appendRow([cartData.productId, cartData.description, cartData.price, cartData.quantity])
   
 }
 
