@@ -3,11 +3,6 @@
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('retroComputers');
 }
-//keep this
-function include()
-{
-  return HtmlService.createHtmlOutputFromFile("retroComputers");
-}
 
 function myFunction() {
   // test function for writing to log
@@ -16,13 +11,35 @@ function myFunction() {
   Logger.log(exString);
 }
 
-function updateCart(cartData) {
+function buyApple(quantity) {
   var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
   var ss = SpreadsheetApp.openByUrl(url);
   var ws = ss.getSheetByName("Cart");
+  var productId = "Apple II";
+  var description = "This is the Apple II. It's a very iconic retro computer.";
+  var price = "300";
   
-  ws.appendRow([cartData.productId, cartData.description, cartData.price, cartData.quantity])
+  ws.appendRow([productId, description, price, quantity]) 
+}
+function buyDekPRo(quantity) {
+  var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
+  var ss = SpreadsheetApp.openByUrl(url);
+  var ws = ss.getSheetByName("Cart");
+  var productId = "Dekogon Workstation I";
+  var description = "Deluxe deckogon workstation complete with mouse.";
+  var price = "400";
   
+  ws.appendRow([productId, description, price, quantity]) 
+}
+function buyDekI(quantity) {
+  var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
+  var ss = SpreadsheetApp.openByUrl(url);
+  var ws = ss.getSheetByName("Cart");
+  var productId = "Dekogon Workstation I";
+  var description = "Deluxe deckogon workstation complete with mouse.";
+  var price = "150";
+  
+  ws.appendRow([productId, description, price, quantity]) 
 }
 
 function userClicked(name, item, address, city, zip, state, price, quantity, total) {

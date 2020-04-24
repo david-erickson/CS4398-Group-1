@@ -78,11 +78,9 @@
          
             
             
-          </div>
-        </div>
-      </div>
+
       <hr>
-    </div>
+
     <div class="container">
       <div class="row">
         <div class="col-4">
@@ -121,17 +119,41 @@
             <img class="card-img-top" src="http://retrocomputers.website/computer1.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Dekogon Workstation Pro</h5>
-              <p class="card-text">Packed with the latest technology, this bad boy will have you surfing the web at hyper speed.</p>
               
-            <input id="Dekogon Workstation Pro" type="button" value="Add to Cart" onclick="google.script.run.withSuccessHandler(updateCart).addToCart(<?= products[i].id ?>, this.form.quatity.value)" />
+              <p class="card-text">Deluxe deckogon workstation complete with mouse.</p>
+              <div>
+              <p > $400 </p>
+              </div>
+             <label> Quantity </label>
+                <select id = "quantityDPro">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                 </select>
+                 
+                 <input type="button" onclick="DekogonPro()" value = "Add to Cart">
+                 
 
                 <script>
-                // refresh cart count UI/view
-                function updateCart(count) { alert(count + " items added to cart"); var div = document.getElementById('cart_details');div.innerHTML = 'Cart: ' + count;
+                  function DekogonPro()
+                  {    
+                    
+                    quantity = document.getElementByID("quantityDPro").value;
+              
+                    google.script.run.buyDekPRo(quantity);
+                    document.getElementById("quantityDPro").value = "1";
+
                   }
                   </script>
 
-          </div>
+              </div>
            </div>
         </div>
         <div class="col-md-4 pb-1 pb-md-0">
@@ -139,11 +161,37 @@
             <img class="card-img-top" src="http://retrocomputers.website/computer2.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Dekogon Workstation I</h5>
-              <p class="card-text">Our entry level model, comes complete with a monitor, keyboard, and the latest in cutting edge floppy drive hardware.</p>
-             <form action = "/action_page.php">
-             <input id="Dekogon Workstation I" type="button" value="Add to Cart" onclick="google.script.run.withSuccessHandler(updateCart).addToCart(<?= products[i].id ?>, this.form.quatity.value)" />
-
+              <p class="card-text">Deluxe deckogon workstation complete with mouse.</p>
+              <div>
+              <p id= "quantityDI" value =150> $150 </p>
               </div>
+             <label> Quantity </label>
+                <select id = "quantityA">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                 </select>
+                 <input type="button" onclick="DekogonI()" value = "Add to Cart">
+                 
+                <script>
+                  function DekogonI()
+                  { 
+                     
+                    quantity = document.getElementByID("quantityDI").value;
+              
+                    google.script.run.buyDekI(quantity);
+                    document.getElementById("quantityDI").value = "1";
+
+                  }
+                </script>
+           </div>  
           </div>
         </div>
         <div class="col-md-4 pb-1 pb-md-0">
@@ -151,9 +199,9 @@
             <img class="card-img-top" src="http://retrocomputers.website/Apple%202.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Apple II</h5>
-              <p id= "descriptionA" class="card-text">This is the Apple II. It's a very iconic retro computer.</p>
+              <p class="card-text">This is the Apple II. It's a very iconic retro computer.</p>
               <div>
-              <p id= "priceA" value =$300> $300 </p>
+              <p> $300 </p>
               </div>
               
                 <label>Quantity </label>
@@ -169,29 +217,19 @@
                   <option>9</option>
                   <option>10</option>
                  </select>
-                 <input id="Apple2" type="button" value="Add to Cart">
+                 <input type="button" onclick="Applebttn()" value = "Add to Cart">
 
                 <script>
-                  document.getElementById("Apple2").addEventListener("click", Applebttn)
-               
                   function Applebttn() 
                   { 
-                    alert(" item added to cart"); 
-                    var cartData = {};
-                    
-                    cartData.productId = document.getElementById("Apple2");
-                    cartData.description = document.getElementById("descriptionA");
-                    cartData.price = document.getElementById("priceA").value;
-                    cartData.quantity = document.getElementByID("quantityA").value;
-                    
-                    google.script.run.updateCart(cartData);
-                    document.getElementById("Apple2") = "Apple2";
-                    document.getElementById("descriptionA") = "This is the Apple II. It's a very iconic retro computer.";
-                    document.getElementById("priceA").value = "300";
-                    document.getElementById("quantityA").value = "";
+                    quantity = document.getElementByID("quantityA").value;
+              
+                    google.script.run.buyApple(quantity);
+                    document.getElementById("quantityA").value = "1";
 
                   }
-                  </script>
+                  
+                </script>
               
           </div>
         </div>
@@ -214,8 +252,7 @@
             <a href="mailto:#">@txstate.com</a>
           </address>
         </div>
-      </div>
-    </div>
+
     <footer class="text-center">
       <div class="container">
         <div class="row">
@@ -225,10 +262,5 @@
         </div>
       </div>
     </footer>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../../Documents/Unnamed Site 2/js/jquery-3.3.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../../Documents/Unnamed Site 2/js/popper.min.js"></script>
-    <script src="js/bootstrap-4.3.1.js"></script>
   </body>
 </html>
