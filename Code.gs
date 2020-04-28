@@ -26,7 +26,7 @@ function buyApple(quantity) {
   var ws = ss.getSheetByName("Cart");
   var productId = "Apple II";
   var description = "This is the Apple II. It's a very iconic retro computer.";
-  var price = "300";
+  var price = "$300";
   
   ws.appendRow([productId, description, price, quantity]) 
 }
@@ -36,7 +36,7 @@ function buyDekPRo(quantity) {
   var ws = ss.getSheetByName("Cart");
   var productId = "Dekogon Workstation Pro";
   var description = "Deluxe deckogon workstation complete with mouse.";
-  var price = "400";
+  var price = "$400";
   
   ws.appendRow([productId, description, price, quantity]) 
 }
@@ -46,9 +46,17 @@ function buyDekI(quantity) {
   var ws = ss.getSheetByName("Cart");
   var productId = "Dekogon Workstation I";
   var description = "Standard  deckogon personal computer.";
-  var price = "150";
+  var price = "$150";
   
   ws.appendRow([productId, description, price, quantity]) 
+}
+
+function clearCart() 
+{
+  var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
+  var ss = SpreadsheetApp.openByUrl(url);
+  var ws = ss.getSheetByName("Cart");
+  ws.getRange("A2:D999").clearContent();
 }
 
 function userClicked(name, item, address, city, zip, state, price, quantity, total) {

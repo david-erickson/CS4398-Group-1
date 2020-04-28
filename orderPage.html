@@ -35,6 +35,10 @@
               <?var url = getScriptUrl();?>
               <a class="nav-link" href='<?=url?>?page=orderPage'> Cart </a>
            </li> 
+           <li class="nav-item active">
+              <?var url = getScriptUrl();?>
+              <a class="nav-link" href='<?=url?>?page=registration'> Registration </a>
+           </li> 
            </ul>
         
     </div>
@@ -103,9 +107,30 @@
 	<h2 class="text-center">ORDER</h2>
     <center>
 
-  <iframe width="600" height="300" seamless frameborder="0" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3lnYwH9r-Qif9RF2aWgLi-B0eFpdJQml6YiwrycPrI1PsMAWSbvXeyIpKQ3jj0gC64JB00v1hD9qw/pubhtml?gid=618434496&amp;single=true&amp;widget=true&amp;headers=false"></iframe>  <label for="textfield">Name:</label>
-    <input type="text" name="textfield" id="name">
-    </div>
+  <iframe  id = "CartFrame" width="600" height="200" seamless frameborder="0"  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3lnYwH9r-Qif9RF2aWgLi-B0eFpdJQml6YiwrycPrI1PsMAWSbvXeyIpKQ3jj0gC64JB00v1hD9qw/pubhtml?gid=354223271&amp;single=true&amp;widget=true&amp;headers=false"></iframe>  
+  <div>
+  <input type="button" onclick="emptyCart()" value = "Empty Cart">
+   <input type="button" onclick="reload()" value = "Update Cart">
+  
+        <script> 
+            function reload() { 
+                document.getElementById('CartFrame').src = document.getElementById('CartFrame').src 
+            } 
+            btn.onclick = reload; 
+        </script> 
+                 
+                <script>
+                  function emptyCart(){  
+                    alert("cart is empty");
+                    google.script.run.clearCart();
+                    document.getElementById('CartFrame').src = document.getElementById('CartFrame').src
+                  }
+                </script>
+   </div>
+  <div>
+  <label for="textfield2">Name:</label>
+  <input type="text" name="textfield" id="name">
+   </div>
 	<div>
     <label for="textfield2">Address:</label>
     <input type="text" name="textfield2" id="address">
