@@ -27,27 +27,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <?var url = getScriptUrl();?>
+              <a class="nav-link" href='<?=url?>?page=retroComputers'> Home </a>
             </li>
             
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cart</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Cart</a>
-               
-                <div class="dropdown-divider"></div>
-                
-              </div>
-            </li>
-            <li class="nav-item">
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
+           <li class="nav-item active">
+              <?var url = getScriptUrl();?>
+              <a class="nav-link" href='<?=url?>?page=orderPage'> Cart </a>
+           </li> 
+           </ul>
+        
+    </div>
+    </div>
     </nav>
     <div class="container mt-3">
       <div class="row">
@@ -110,6 +101,8 @@
       </div>
     </div>
     <hr>
+
+ 
     <h2 class="text-center">PRODUCTS</h2>
     <hr>
     <div class="container">
@@ -144,8 +137,9 @@
                 <script>
                   function DekogonPro()
                   {    
-                    
-                    quantity = document.getElementByID("quantityDPro").value;
+                    alert("added to cart");
+
+                    var quantity = document.getElementById("quantityDPro").value;
               
                     google.script.run.buyDekPRo(quantity);
                     document.getElementById("quantityDPro").value = "1";
@@ -161,12 +155,12 @@
             <img class="card-img-top" src="http://retrocomputers.website/computer2.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Dekogon Workstation I</h5>
-              <p class="card-text">Deluxe deckogon workstation complete with mouse.</p>
+              <p class="card-text">Standard  deckogon personal computer.</p>
               <div>
-              <p id= "quantityDI" value =150> $150 </p>
+              <p> $150 </p>
               </div>
              <label> Quantity </label>
-                <select id = "quantityA">
+                <select id = "quantityDI">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -181,14 +175,11 @@
                  <input type="button" onclick="DekogonI()" value = "Add to Cart">
                  
                 <script>
-                  function DekogonI()
-                  { 
-                     
-                    quantity = document.getElementByID("quantityDI").value;
-              
+                  function DekogonI(){  
+                    alert("added to cart");
+                    var quantity = document.getElementById("quantityDI").value; 
                     google.script.run.buyDekI(quantity);
                     document.getElementById("quantityDI").value = "1";
-
                   }
                 </script>
            </div>  
@@ -205,7 +196,7 @@
               </div>
               
                 <label>Quantity </label>
-                <select id = "quantityA">
+                <select id = "AppQuantity">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -217,15 +208,18 @@
                   <option>9</option>
                   <option>10</option>
                  </select>
-                 <input type="button" onclick="Applebttn()" value = "Add to Cart">
+                 <button id = "Applebutt" > "Add to Cart"</button>  
+                 
 
                 <script>
+                  document.getElementById("Applebutt").addEventListener("click", Applebttn);
                   function Applebttn() 
                   { 
-                    quantity = document.getElementByID("quantityA").value;
+                    alert("added to cart");
+                    var quantity = document.getElementById("AppQuantity").value;
               
                     google.script.run.buyApple(quantity);
-                    document.getElementById("quantityA").value = "1";
+                    document.getElementById("AppQuantity").value = "1";
 
                   }
                   
