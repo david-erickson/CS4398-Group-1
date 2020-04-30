@@ -1,28 +1,33 @@
-/*QUnit.helpers( this );
-QUnit.exposeInternals();
+//QUnit.helpers( this );
+//QUnit.exposeInternals();
 
-function tests() {
-console = Logger;
-userClickedTest();
-//checkUserTest();
-}
+//function tests() {
+//console = Logger;
+//DekogonITest();
 
-function doGet( e ) {
-QUnit.urlParams( e.parameter );
-QUnit.config({
-title: "QUnit for Google Apps Script - Test suite" // Sets the title of the test page.
-});
-QUnit.load( tests );
+//}
 
-return QUnit.getHtml();
-};
+//function doGet( e ) {
+//QUnit.urlParams( e.parameter );
+//QUnit.config({
+//title: "QUnit for Google Apps Script - Test suite" // Sets the title of the test page.
+//});
+//QUnit.load( tests );
 
-function userClickedTest() {
+//return QUnit.getHtml();
+//};
 
-}
+//function DekogonITest() {
+  //test("Testing Dekogon I order button input validity", function () {
+    //clearCart();
+    //buyDekI(10);
+    //buyDekI(10);
+    
+    //var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=354223271";
+    //var ss = SpreadsheetApp.openByUrl(url);
+    //var ws = ss.getSheetByName("Cart");
 
-/*function checkUserTest() {
-test("checkUser testing", function() {
-equal(checkUser("usename", "pass"), 0, "Testing for impossible username/password combination");
-});*/
-//} */
+    //equal(1,1,'Success');
+    
+  //});
+//}

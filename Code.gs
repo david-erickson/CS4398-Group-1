@@ -59,14 +59,55 @@ function clearCart()
   ws.getRange("A2:D999").clearContent();
 }
 
-function userClicked(name, item, address, city, zip, state, price, quantity, total) {
+function userOrder(name, address, city, zip, state) {
   
   // get spreadsheet by name
   var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
   var ss = SpreadsheetApp.openByUrl(url);
-  var ws = ss.getSheetByName("Orders");
-  
-  ws.appendRow([name, new Date(), item, address, city, zip, state, price, quantity, total])
+  var ws = ss.getSheetByName("User");
+
+  ws.appendRow([name, address, city, zip, state]) 
+}
+
+
+function fillOrder() {
+  var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
+  var ss = SpreadsheetApp.openByUrl(url);
+  var wsC = ss.getSheetByName("Cart");
+  var wsU = ss.getSheetByName("User")
+  var wsO = ss.getSheetByName("Orders");
+  while (!(wsC.getRange("A2:D2").isBlank()))
+  {
+    var Cvalues = wsC.getRange(wsC.getLastRow(), 1, 1, 4);
+    var Uvalues = wsU.getRange(wsU.getLastRow(), 1, 1, 5);
+    var destRangeC = wsO.getRange(wsO.getLastRow()+1,1);
+    var destRangeU = wsO.getRange(wsO.getLastRow()+1,5);
+    Cvalues.copyTo (destRangeC, {contentsOnly: true});
+    Uvalues.copyTo (destRangeU, {contentsOnly: true});
+    wsC.deleteRow(wsC.getLastRow());
+  }
+}
+
+function combineSheets() {
+ var url = "https://docs.google.com/spreadsheets/d/1D465I5RKnoyZLWZ8nZCC9zm3dsSMi7Fifvi3R4jQUcs/edit#gid=698686533";
+ var ss = SpreadsheetApp.openByUrl(url);
+ var allsheets = ss.getSheets(); 
+ var combineSht = ss.getSheetByName("Orders"); 
+ for (var i=0; i<allsheets.length; i++) 
+ {
+   if (shtName != 'Orders')
+   {
+     var shtName = allsheets[i].getName();
+     var sht = ss.getSheetByName(shtName);
+     var shtrng = sht.getDataRange();
+     var shtrngA = shtrng.getValues(); 
+     for(var j=0;j<shtrngA.length;j++)
+     {
+       combineSht.appendRow(shtrngA[j]);
+     }
+   }
+ }
+ SpreadsheetApp.flush();
 }
 
 function checkUser(uName, uPass) {

@@ -149,6 +149,31 @@
 </div>
 <div>
 </div>
+
+
+ <input type="button" onclick="Purchase()" value = "Submit Order">
+ 
+ 
+ <script>
+    function Purchase(){  
+         alert("You're order was submitted");
+         var name = document.getElementById("name").value;
+         var address = document.getElementById("address").value;
+         var city = document.getElementById("city").value;
+         var zip = document.getElementById("zip").value;
+         var state = document.getElementById("state").value;
+         
+         google.script.run.userOrder(name, address, city, zip, state);
+         
+         document.getElementById("name").value = "";
+         document.getElementById("address").value = "";
+         document.getElementById("city").value = "";
+         document.getElementById("zip").value = "";
+         document.getElementById("state").value = "";
+         google.script.run.fillOrder();
+         
+         }
+ </script>
   </center>
     
  
